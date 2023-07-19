@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from '../models/Product';
+import { Product, ProductApi } from '../models/Product';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,7 +17,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  getProduct(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getProduct(): Observable<ProductApi> {
+    return this.http.get<ProductApi>(this.apiUrl);
   }
 }

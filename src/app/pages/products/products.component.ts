@@ -17,7 +17,7 @@ export class ProductsComponent {
       .getProduct()
       .subscribe(
         (products) => (
-          console.log(products.products), (this.products = products.products)
+          console.log(products), (this.products = products.products)
         )
       );
   }

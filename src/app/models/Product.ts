@@ -1,3 +1,10 @@
+export interface ProductApi {
+  limit: number,
+  products: Product[],
+  skip: number,
+  total: number
+}
+
 export interface Product {
   id: number;
   title: string;
