@@ -10,3 +10,6 @@ a:hover {
     background-color: #02213b;
     transition: 0.5s;
 }
+.buttons {
+    margin-bottom: 20px;
+}
