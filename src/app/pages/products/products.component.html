@@ -1,4 +1,2 @@
 <h1>Products</h1>
-<div *ngFor="let product of products">
-  <p>{{ product.title }}</p>
-</div>
+<app-product-table [products]="products"> </app-product-table>
