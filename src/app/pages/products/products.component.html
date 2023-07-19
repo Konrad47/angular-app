@@ -1,2 +1,5 @@
-<h1>Products</h1>
-<app-product-table [products]="products"> </app-product-table>
+<div *ngIf="products; else elseBlock">
+  <h1>Products</h1>
+  <app-product-table [products]="products"> </app-product-table>
+</div>
+<ng-template #elseBlock>...</ng-template>
