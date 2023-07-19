@@ -11,6 +11,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { ButtonsComponent } from './components/buttons/buttons.component';
 import { ProductTableComponent } from './components/product-table/product-table.component';
 import { ProductComponent } from './pages/product/product.component';
+import { ProductAddComponent } from './pages/product-add/product-add.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ProductComponent } from './pages/product/product.component';
     ButtonsComponent,
     ProductTableComponent,
     ProductComponent,
+    ProductAddComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
   providers: [],
