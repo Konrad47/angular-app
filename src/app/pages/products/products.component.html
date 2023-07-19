@@ -1,5 +1,6 @@
 <div *ngIf="products; else elseBlock">
   <h1>Products</h1>
+  <button>Add product</button>
   <app-product-table
     [products]="products"
     (onDeleteProduct)="deleteProduct($event)"
