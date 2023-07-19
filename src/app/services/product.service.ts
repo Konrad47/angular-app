@@ -20,4 +20,9 @@ export class ProductService {
   getProduct(): Observable<ProductApi> {
     return this.http.get<ProductApi>(this.apiUrl);
   }
+
+  deleteProduct(id: string): Observable<Product> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<Product>(url);
+  }
 }

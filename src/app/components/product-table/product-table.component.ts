@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from 'src/app/models/Product';
 
 @Component({
@@ -8,8 +8,13 @@ import { Product } from 'src/app/models/Product';
 })
 export class ProductTableComponent {
   @Input() products!: Product[];
+  @Output() onDeleteProduct: EventEmitter<string> = new EventEmitter();
 
   get sortedProducts(): Product[] {
     return this.products.sort((a, b) => a.title.localeCompare(b.title));
+  }
+
+  onDelete(id: string) {
+    this.onDeleteProduct.emit(id);
   }
 }

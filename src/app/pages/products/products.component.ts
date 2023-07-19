@@ -21,4 +21,13 @@ export class ProductsComponent {
         )
       );
   }
+
+  deleteProduct(id: string) {
+    this.productService
+      .deleteProduct(id)
+      .subscribe(
+        () =>
+          (this.products = this.products.filter((pr) => pr.id !== parseInt(id)))
+      );
+  }
 }
