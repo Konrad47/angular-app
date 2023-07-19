@@ -12,7 +12,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root',
 })
-export class ProductServiceService {
+export class ProductService {
   private apiUrl = 'https://dummyjson.com/products';
 
   constructor(private http: HttpClient) {}
