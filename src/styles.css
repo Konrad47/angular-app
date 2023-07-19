@@ -1,11 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 
 .app-container {
-    margin-top: 100px;
-    margin-left: 100px;
-    margin-right: 30px;
+  margin-top: 100px;
+  margin-left: 100px;
+  margin-right: 30px;
 }
 
 body {
-    font-family: "Poppins", sans-serif;
-  }
+  font-family: "Poppins", sans-serif;
+}
+
+.route-title:hover {
+  font-weight: bold;
+  transition: 0.5s;
+  cursor: pointer;
+}
