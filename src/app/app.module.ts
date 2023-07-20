@@ -12,6 +12,7 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
 import { ProductTableComponent } from './components/product-table/product-table.component';
 import { ProductComponent } from './pages/product/product.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ProductAddComponent } from './pages/product-add/product-add.component';
     ProductTableComponent,
     ProductComponent,
     ProductAddComponent,
+    ProductFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
   providers: [],

@@ -14,3 +14,41 @@ body {
   font-weight: bold;
   transition: 0.5s;
 }
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.form-control {
+  margin: 0;
+  padding-left: 0;
+  border: none;
+}
+
+.form-control label {
+  display: block;
+}
+
+.form-control input {
+  width: 40%;
+  height: 40px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
+.btn {
+  margin-top: 20px;
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #003b6f;
+  border-radius: 0;
+  color: #fff;
+  margin-right: 20px;
+}
+
+.btn:hover {
+  background-color: #02213b;
+  color: #fff;
+  transition: 0.5s;
+}
