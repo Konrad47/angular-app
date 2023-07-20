@@ -14,6 +14,7 @@ import { ProductTableComponent } from './components/product-table/product-table.
 import { ProductComponent } from './pages/product/product.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductEditFormComponent } from './components/product-edit-form/product-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
     ProductComponent,
     ProductAddComponent,
     ProductFormComponent,
+    ProductEditFormComponent,
   ],
   imports: [
     BrowserModule,

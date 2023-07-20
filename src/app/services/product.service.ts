@@ -17,8 +17,13 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  getProduct(): Observable<ProductApi> {
+  getProducts(): Observable<ProductApi> {
     return this.http.get<ProductApi>(this.apiUrl);
+  }
+
+  getProduct(id: string): Observable<Product> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Product>(url);
   }
 
   deleteProduct(id: string): Observable<Product> {

@@ -14,7 +14,7 @@ export class ProductsComponent {
 
   ngOnInit(): void {
     this.productService
-      .getProduct()
+      .getProducts()
       .subscribe(
         (products) => (
           console.log(products), (this.products = products.products)
