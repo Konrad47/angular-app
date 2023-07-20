@@ -23,4 +23,11 @@ export class ProductComponent {
       .getProduct(this.productId)
       .subscribe((product) => (this.product = product));
   }
+
+  onEdit(product: Product) {
+    console.log(product);
+    this.productService
+      .editProduct(product, this.productId)
+      .subscribe(() => (this.product = product));
+  }
 }

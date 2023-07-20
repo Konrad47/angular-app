@@ -1,2 +1,5 @@
-<p>{{ productId }}</p>
-<app-product-edit-form [product]="product"></app-product-edit-form>
+<h3>Product ID: {{ productId }}</h3>
+<app-product-edit-form
+  [product]="product"
+  (onEditProduct)="onEdit($event)"
+></app-product-edit-form>
