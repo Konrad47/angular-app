@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Product } from 'src/app/models/Product';
 
 @Component({
   selector: 'app-product-form',
@@ -6,7 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-form.component.css'],
 })
 export class ProductFormComponent {
+  @Output() onAddProduct: EventEmitter<Product> = new EventEmitter();
+  title!: string;
+  description!: string;
+
   onSubmit() {
-    console.log('ss');
+    const product: Product = {
+      title: this.title,
+      description: this.description,
+    };
+
+    this.onAddProduct.emit(product);
   }
 }

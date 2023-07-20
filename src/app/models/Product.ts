@@ -1,19 +1,19 @@
 export interface ProductApi {
-  limit: number,
-  products: Product[],
-  skip: number,
-  total: number
+  limit: number;
+  products: Product[];
+  skip: number;
+  total: number;
 }
 
 export interface Product {
-  id: number;
+  id?: number;
   title: string;
   description: string;
-  price: number;
-  discountPercentage: number;
-  stock: number;
-  brand: string;
-  category: string;
-  thumbnail: string;
-  images: string[];
+  price?: number;
+  discountPercentage?: number;
+  stock?: number;
+  brand?: string;
+  category?: string;
+  thumbnail?: string;
+  images?: string[];
 }

@@ -21,7 +21,9 @@
         >
           Edit
         </button>
-        <button (click)="onDelete(product.id.toString())">Delete</button>
+        <button *ngIf="product.id" (click)="onDelete(product.id.toString())">
+          Delete
+        </button>
       </td>
     </tr>
   </tbody>
