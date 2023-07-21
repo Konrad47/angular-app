@@ -6,10 +6,10 @@ export interface PostApi {
 }
 
 export interface Post {
-  id: number;
+  id?: number;
   title: string;
   body: string;
-  userId: number;
-  tags: string[];
-  reactions: number;
+  userId?: number;
+  tags?: string[];
+  reactions?: number;
 }

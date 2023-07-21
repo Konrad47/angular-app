@@ -28,7 +28,7 @@ export class PostsComponent implements OnInit {
     this.posts$ = this.store.pipe(select(postsSelector));
     this.post$ = this.store.pipe(select(postSelector));
 
-    this.subscription = this.post$.subscribe((posts) => {
+    this.subscription = this.posts$.subscribe((posts) => {
       console.log('Posts:', posts);
     });
   }

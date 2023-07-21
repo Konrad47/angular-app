@@ -21,6 +21,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { PostsEffects } from './store/post/post.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { PostTableComponent } from './components/post-table/post-table.component';
+import { PostComponent } from './pages/post/post.component';
+import { PostFormComponent } from './components/post-form/post-form.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { PostTableComponent } from './components/post-table/post-table.component
     ProductEditFormComponent,
     PostsComponent,
     PostTableComponent,
+    PostComponent,
+    PostFormComponent,
   ],
   imports: [
     BrowserModule,
