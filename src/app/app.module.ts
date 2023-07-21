@@ -23,6 +23,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { PostTableComponent } from './components/post-table/post-table.component';
 import { PostComponent } from './pages/post/post.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
+import { PostEditFormComponent } from './components/post-edit-form/post-edit-form.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { PostFormComponent } from './components/post-form/post-form.component';
     PostTableComponent,
     PostComponent,
     PostFormComponent,
+    PostEditFormComponent,
   ],
   imports: [
     BrowserModule,

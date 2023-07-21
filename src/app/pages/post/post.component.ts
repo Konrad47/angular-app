@@ -36,4 +36,8 @@ export class PostComponent {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+  onEdit(post: Post) {
+    console.log(post);
+  }
 }

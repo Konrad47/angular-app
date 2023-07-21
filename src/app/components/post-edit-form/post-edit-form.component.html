@@ -1,0 +1,23 @@
+<form *ngIf="post" class="add-form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+    <label for="title">Title</label>
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="editedPost.title"
+      id="title"
+      placeholder="Title"
+    />
+  </div>
+  <div class="form-control">
+    <label for="body">Body</label>
+    <textarea
+      type="text"
+      name="body"
+      [(ngModel)]="editedPost.body"
+      id="body"
+      placeholder="body"
+    ></textarea>
+  </div>
+  <input type="submit" value="Update post" class="btn" />
+</form>

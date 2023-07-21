@@ -37,6 +37,13 @@ body {
   font-size: 17px;
 }
 
+.form-control textarea {
+  width: 40%;
+  height: 150px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+
 .btn {
   margin-top: 20px;
   text-decoration: none;

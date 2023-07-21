@@ -1,1 +1,7 @@
 <h3>Product ID: {{ postId }}</h3>
+<div *ngIf="post$ | async as post">
+  <app-post-edit-form
+    [post]="post"
+    (onEditPost)="onEdit($event)"
+  ></app-post-edit-form>
+</div>
