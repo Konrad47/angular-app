@@ -19,4 +19,9 @@ export class PostService {
   getPosts(): Observable<PostApi> {
     return this.http.get<PostApi>(this.apiUrl);
   }
+
+  deletePost(id: string): Observable<Post> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<Post>(url);
+  }
 }

@@ -20,5 +20,20 @@ export class PostsEffects {
     )
   );
 
+  deletePost$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType('[Posts] Delete Post'),
+      mergeMap((action: { id: string }) => {
+        const { id } = action;
+        return this.postService.deletePost(id).pipe(
+          map(() => PostActions.deletePostSuccess()),
+          catchError((error) =>
+            of(PostActions.deletePostFailure({ error: error.message }))
+          )
+        );
+      })
+    )
+  );
+
   constructor(private actions$: Actions, private postService: PostService) {}
 }

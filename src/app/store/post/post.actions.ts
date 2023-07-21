@@ -10,3 +10,13 @@ export const getPostsFailure = createAction(
   '[Posts] Get Posts failure',
   props<{ error: string }>()
 );
+
+export const deletePost = createAction(
+  '[Posts] Delete Post',
+  props<{ id: string }>()
+);
+export const deletePostSuccess = createAction('[Posts] Delete Post success');
+export const deletePostFailure = createAction(
+  '[Posts] Delete Posts failure',
+  props<{ error: string }>()
+);

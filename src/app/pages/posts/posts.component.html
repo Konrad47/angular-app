@@ -1,5 +1,3 @@
-<p>posts works!</p>
-
 <div *ngIf="isLoading$ | async">Loading...</div>
 
 <div *ngIf="error$ | async">
@@ -7,5 +5,8 @@
 </div>
 
 <div *ngIf="posts$ | async as posts">
-  <app-post-table [posts]="posts.posts"></app-post-table>
+  <app-post-table
+    [posts]="posts.posts"
+    (onDeletePost)="deletePost($event)"
+  ></app-post-table>
 </div>

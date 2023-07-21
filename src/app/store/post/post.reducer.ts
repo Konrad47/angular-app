@@ -5,10 +5,10 @@ import * as PostActions from './post.actions';
 export const initialState: PostStateInterface = {
   isLoading: false,
   posts: {
-    limit: 0,
+    limit: 30,
     posts: [],
     skip: 0,
-    total: 0,
+    total: 150,
   },
   error: null,
 };
@@ -25,5 +25,19 @@ export const reducers = createReducer(
     ...state,
     isLoading: false,
     error: action.error,
-  }))
+  })),
+  on(PostActions.deletePost, (state, { id }) => {
+    const updatedPosts = state.posts.posts.filter(
+      (post) => post.id !== parseInt(id)
+    );
+    return {
+      ...state,
+      posts: {
+        posts: updatedPosts,
+        limit: state.posts.limit,
+        skip: state.posts.skip,
+        total: state.posts.total,
+      },
+    };
+  })
 );

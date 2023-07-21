@@ -26,8 +26,13 @@ export class PostsComponent implements OnInit {
     this.posts$ = this.store.pipe(select(postSelector));
 
     this.subscription = this.posts$.subscribe((posts) => {
-      console.log('Posts:', posts.posts);
+      console.log('Posts:', posts);
     });
+  }
+
+  deletePost(id: string) {
+    console.log(id);
+    this.store.dispatch(PostActions.deletePost({ id }));
   }
 
   ngOnInit(): void {
