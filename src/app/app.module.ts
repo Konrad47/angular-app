@@ -20,6 +20,7 @@ import { reducers } from './store/post/post.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { PostsEffects } from './store/post/post.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { PostTableComponent } from './components/post-table/post-table.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ProductFormComponent,
     ProductEditFormComponent,
     PostsComponent,
+    PostTableComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,27 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Body</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="route-title" *ngFor="let post of sortedPosts; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ post.title }}
+      </td>
+      <td>{{ post.body }}</td>
+      <td>
+        <button [routerLink]="['/posts', post.id]" routerLinkActive="active">
+          Edit
+        </button>
+        <button *ngIf="post.id" (click)="onDelete(post.id.toString())">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
