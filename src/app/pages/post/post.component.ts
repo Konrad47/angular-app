@@ -6,6 +6,7 @@ import { Post } from 'src/app/models/Post';
 import { AppStateInterface } from 'src/app/models/appState.interface';
 import * as PostActions from '../../store/post/post.actions';
 import { postSelector } from 'src/app/store/post/post.selectors';
+import { editPost } from '../../store/post/post.actions';
 
 @Component({
   selector: 'app-post',
@@ -39,5 +40,7 @@ export class PostComponent {
 
   onEdit(post: Post) {
     console.log(post);
+    const id = this.postId;
+    this.store.dispatch(editPost({ post, id }));
   }
 }

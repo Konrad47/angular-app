@@ -60,5 +60,17 @@ export const reducers = createReducer(
         total: state.posts.total,
       },
     };
+  }),
+  on(PostActions.editPostSuccess, (state, { post, id }) => {
+    if (state.post.id === parseInt(id)) {
+      return {
+        ...state,
+        post: {
+          ...state.post,
+          ...post,
+        },
+      };
+    }
+    return state;
   })
 );

@@ -28,3 +28,13 @@ export const deletePost = createAction(
   '[Posts] Delete Post',
   props<{ id: string }>()
 );
+
+export const editPost = createAction(
+  '[Posts] Edit Post',
+  props<{ post: Post; id: string }>()
+);
+export const editPostSuccess = createAction(
+  '[Posts] Edit Post Success',
+  props<{ post: Post; id: string }>()
+);
+export const editPostFailure = createAction('[Posts] Edit Post Failure');
