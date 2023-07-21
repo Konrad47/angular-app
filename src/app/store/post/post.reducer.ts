@@ -10,6 +10,14 @@ export const initialState: PostStateInterface = {
     skip: 0,
     total: 150,
   },
+  post: {
+    id: 0,
+    title: '',
+    body: '',
+    userId: 0,
+    tags: [],
+    reactions: 0,
+  },
   error: null,
 };
 
@@ -26,6 +34,19 @@ export const reducers = createReducer(
     isLoading: false,
     error: action.error,
   })),
+
+  on(PostActions.getPost, (state) => ({ ...state, isLoading: true })),
+  on(PostActions.getPostSuccess, (state, action) => ({
+    ...state,
+    isLoading: false,
+    post: action.post,
+  })),
+  on(PostActions.getPostFailure, (state, action) => ({
+    ...state,
+    isLoading: false,
+    error: action.error,
+  })),
+
   on(PostActions.deletePost, (state, { id }) => {
     const updatedPosts = state.posts.posts.filter(
       (post) => post.id !== parseInt(id)

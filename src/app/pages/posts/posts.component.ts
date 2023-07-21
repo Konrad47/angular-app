@@ -6,9 +6,10 @@ import {
   errorSelector,
   isLoadingSelector,
   postSelector,
+  postsSelector,
 } from 'src/app/store/post/post.selectors';
 import { AppStateInterface } from 'src/app/models/appState.interface';
-import { PostApi } from 'src/app/models/Post';
+import { Post, PostApi } from 'src/app/models/Post';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -18,14 +19,16 @@ export class PostsComponent implements OnInit {
   isLoading$: Observable<boolean>;
   error$: Observable<string | null>;
   posts$: Observable<PostApi>;
+  post$: Observable<Post>;
   private subscription: Subscription;
 
   constructor(private store: Store<AppStateInterface>) {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
-    this.posts$ = this.store.pipe(select(postSelector));
+    this.posts$ = this.store.pipe(select(postsSelector));
+    this.post$ = this.store.pipe(select(postSelector));
 
-    this.subscription = this.posts$.subscribe((posts) => {
+    this.subscription = this.post$.subscribe((posts) => {
       console.log('Posts:', posts);
     });
   }
@@ -37,6 +40,7 @@ export class PostsComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(PostActions.getPosts());
+    this.store.dispatch(PostActions.getPost({ id: '1' }));
   }
 
   ngOnDestroy(): void {

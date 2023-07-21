@@ -20,16 +20,29 @@ export class PostsEffects {
     )
   );
 
+  getPost$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PostActions.getPost),
+      mergeMap((action: { id: string }) => {
+        const { id } = action;
+        return this.postService.getPost(id).pipe(
+          map((post) => PostActions.getPostSuccess({ post })),
+          catchError((error) =>
+            of(PostActions.getPostsFailure({ error: error.message }))
+          )
+        );
+      })
+    )
+  );
+
   deletePost$ = createEffect(() =>
     this.actions$.pipe(
-      ofType('[Posts] Delete Post'),
+      ofType(PostActions.deletePost),
       mergeMap((action: { id: string }) => {
         const { id } = action;
         return this.postService.deletePost(id).pipe(
-          map(() => PostActions.deletePostSuccess()),
-          catchError((error) =>
-            of(PostActions.deletePostFailure({ error: error.message }))
-          )
+          map(() => ({ type: '[Posts] Delete Post success' })),
+          catchError(() => of({ type: '[Posts] Delete Post Failure' }))
         );
       })
     )

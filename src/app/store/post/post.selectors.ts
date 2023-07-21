@@ -8,9 +8,14 @@ export const isLoadingSelector = createSelector(
   (state) => state.isLoading
 );
 
-export const postSelector = createSelector(
+export const postsSelector = createSelector(
   selectFeature,
   (state) => state.posts
+);
+
+export const postSelector = createSelector(
+  selectFeature,
+  (state) => state.post
 );
 
 export const errorSelector = createSelector(
