@@ -23,4 +23,11 @@ export const reducers = createReducer(
     isLoading: false,
     error: error,
   }))
+  // on(AuthActions.getLoggedUser, (state) => ({
+  //   ...state,
+  //   loggedUser: {
+  //     firstName: '',
+  //     token: '',
+  //   },
+  // }))
 );
