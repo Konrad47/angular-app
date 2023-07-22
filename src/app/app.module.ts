@@ -29,6 +29,7 @@ import { StartComponent } from './pages/start/start.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthEffects } from './store/authorization/auth.effects';
 import { authReducers } from './store/authorization/auth.reducer';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { authReducers } from './store/authorization/auth.reducer';
     PostAddComponent,
     StartComponent,
     LoginComponent,
+    LoginFormComponent,
   ],
   imports: [
     BrowserModule,
