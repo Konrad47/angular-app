@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/authorization';
+import { LoggedUser, User } from '../models/authorization';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,7 +17,7 @@ export class AuthorizationService {
 
   constructor(private http: HttpClient) {}
 
-  loginUser(user: User): Observable<User> {
-    return this.http.post<User>(this.apiUrl, user, httpOptions);
+  loginUser(user: User): Observable<LoggedUser> {
+    return this.http.post<LoggedUser>(this.apiUrl, user, httpOptions);
   }
 }
