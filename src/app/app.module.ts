@@ -24,6 +24,7 @@ import { PostTableComponent } from './components/post-table/post-table.component
 import { PostComponent } from './pages/post/post.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
 import { PostEditFormComponent } from './components/post-edit-form/post-edit-form.component';
+import { PostAddComponent } from './pages/post-add/post-add.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { PostEditFormComponent } from './components/post-edit-form/post-edit-for
     PostComponent,
     PostFormComponent,
     PostEditFormComponent,
+    PostAddComponent,
   ],
   imports: [
     BrowserModule,
