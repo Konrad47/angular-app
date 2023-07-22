@@ -11,13 +11,14 @@
   </div>
   <div class="form-control">
     <label for="body">Body</label>
-    <input
+    <textarea
       type="text"
       name="body"
       [(ngModel)]="body"
       id="body"
       placeholder="Body"
-    />
+    >
+    </textarea>
   </div>
   <input type="submit" value="Save post" class="btn" />
 </form>
