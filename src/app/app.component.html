@@ -3,6 +3,9 @@
   <div class="app-container">
     <div *ngIf="loggedUser$ | async as loggedUser">
       <app-buttons *ngIf="loggedUser.token !== ''"></app-buttons>
+      <div *ngIf="loggedUser.token === ''" class="buttons">
+        <a routerLink="login">Login page</a>
+      </div>
     </div>
     <router-outlet></router-outlet>
   </div>

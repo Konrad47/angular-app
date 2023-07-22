@@ -14,5 +14,7 @@ export class LoginComponent {
 
   onLogin(user: User) {
     this.store.dispatch(login({ user }));
+    //username: kminchelle
+    //password: 0lelplR
   }
 }
