@@ -7,6 +7,7 @@ import { PostsComponent } from './pages/posts/posts.component';
 import { PostComponent } from './pages/post/post.component';
 import { PostAddComponent } from './pages/post-add/post-add.component';
 import { StartComponent } from './pages/start/start.component';
+import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
   { path: '', component: StartComponent },
   { path: 'products', component: ProductsComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'posts', component: PostsComponent },
   { path: 'posts/:id', component: PostComponent },
   { path: 'post-add', component: PostAddComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
