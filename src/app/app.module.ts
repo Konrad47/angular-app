@@ -27,6 +27,8 @@ import { PostEditFormComponent } from './components/post-edit-form/post-edit-for
 import { PostAddComponent } from './pages/post-add/post-add.component';
 import { StartComponent } from './pages/start/start.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthEffects } from './store/authorization/auth.effects';
+import { authReducers } from './store/authorization/auth.reducer';
 
 @NgModule({
   declarations: [
@@ -54,8 +56,8 @@ import { LoginComponent } from './pages/login/login.component';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    StoreModule.forRoot({ posts: reducers }),
-    EffectsModule.forRoot([PostsEffects]),
+    StoreModule.forRoot({ posts: reducers, auth: authReducers }),
+    EffectsModule.forRoot([PostsEffects, AuthEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode

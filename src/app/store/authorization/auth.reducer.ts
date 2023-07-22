@@ -10,7 +10,7 @@ export const initialState: AuthStateInterface = {
   error: null,
 };
 
-export const reducers = createReducer(
+export const authReducers = createReducer(
   initialState,
   on(AuthActions.login, (state) => ({ ...state, isLoading: true })),
   on(AuthActions.loginSuccess, (state, { loggedUser }) => ({
@@ -23,11 +23,4 @@ export const reducers = createReducer(
     isLoading: false,
     error: error,
   }))
-  // on(AuthActions.getLoggedUser, (state) => ({
-  //   ...state,
-  //   loggedUser: {
-  //     firstName: '',
-  //     token: '',
-  //   },
-  // }))
 );

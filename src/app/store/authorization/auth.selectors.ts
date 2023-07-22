@@ -17,8 +17,3 @@ export const errorUserSelector = createSelector(
   selectFeature,
   (state) => state.error
 );
-
-// export const getLoggedUser = createSelector(
-//   selectFeature,
-//   (state) => state.loggedUser
-// );
