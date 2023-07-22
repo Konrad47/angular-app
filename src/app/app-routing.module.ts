@@ -5,6 +5,7 @@ import { ProductComponent } from './pages/product/product.component';
 import { ProductAddComponent } from './pages/product-add/product-add.component';
 import { PostsComponent } from './pages/posts/posts.component';
 import { PostComponent } from './pages/post/post.component';
+import { PostAddComponent } from './pages/post-add/post-add.component';
 const routes: Routes = [
   // { path: '', component: AppComponent },
   { path: 'products', component: ProductsComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'product-add', component: ProductAddComponent },
   { path: 'posts', component: PostsComponent },
   { path: 'posts/:id', component: PostComponent },
+  { path: 'post-add', component: PostAddComponent },
 ];
 
 @NgModule({
