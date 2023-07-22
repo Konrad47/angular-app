@@ -18,6 +18,7 @@ export class PostFormComponent {
     const post: Post = {
       title: this.title,
       body: this.body,
+      userId: 5,
     };
 
     if (this.title === '' || this.body === '') {

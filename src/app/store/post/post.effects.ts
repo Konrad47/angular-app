@@ -62,5 +62,18 @@ export class PostsEffects {
     )
   );
 
+  addPost$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(PostActions.addPost),
+      mergeMap((action: { post: Post }) => {
+        const { post } = action;
+        return this.postService.addPost(post).pipe(
+          map(() => PostActions.addPostSuccess({ post })),
+          catchError(() => of(PostActions.addPostFailure()))
+        );
+      })
+    )
+  );
+
   constructor(private actions$: Actions, private postService: PostService) {}
 }

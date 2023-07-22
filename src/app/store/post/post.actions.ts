@@ -38,3 +38,13 @@ export const editPostSuccess = createAction(
   props<{ post: Post; id: string }>()
 );
 export const editPostFailure = createAction('[Posts] Edit Post Failure');
+
+export const addPost = createAction(
+  '[Posts] Add Post',
+  props<{ post: Post }>()
+);
+export const addPostSuccess = createAction(
+  '[Posts] Add Post Success',
+  props<{ post: Post }>()
+);
+export const addPostFailure = createAction('[Posts] Add Post Failure');

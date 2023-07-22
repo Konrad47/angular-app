@@ -61,6 +61,7 @@ export const reducers = createReducer(
       },
     };
   }),
+
   on(PostActions.editPostSuccess, (state, { post, id }) => {
     if (state.post.id === parseInt(id)) {
       return {
@@ -72,5 +73,18 @@ export const reducers = createReducer(
       };
     }
     return state;
+  }),
+
+  on(PostActions.addPostSuccess, (state, { post }) => {
+    const updatedPosts = [...state.posts.posts, post];
+    return {
+      ...state,
+      posts: {
+        posts: updatedPosts,
+        limit: state.posts.limit,
+        skip: state.posts.skip,
+        total: state.posts.total,
+      },
+    };
   })
 );
