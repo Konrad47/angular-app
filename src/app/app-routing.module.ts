@@ -9,7 +9,6 @@ import { StartComponent } from './pages/start/start.component';
 import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
   { path: '', component: StartComponent },
-  { path: 'product-add', component: ProductAddComponent },
   { path: 'posts', component: PostsComponent },
   { path: 'posts/:id', component: PostComponent },
   { path: 'post-add', component: PostAddComponent },
@@ -23,6 +22,13 @@ const routes: Routes = [
     path: 'products/:id',
     loadChildren: () =>
       import('./pages/product/product.module').then((m) => m.ProductModule),
+  },
+  {
+    path: 'products-add',
+    loadChildren: () =>
+      import('./pages/product-add/product-add.module').then(
+        (m) => m.ProductAddModule
+      ),
   },
 ];
 
