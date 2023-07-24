@@ -1,16 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductComponent } from './pages/product/product.component';
-import { ProductAddComponent } from './pages/product-add/product-add.component';
-import { PostsComponent } from './pages/posts/posts.component';
-import { PostComponent } from './pages/post/post.component';
-import { PostAddComponent } from './pages/post-add/post-add.component';
-import { StartComponent } from './pages/start/start.component';
-import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
-  { path: '', component: StartComponent },
-  { path: 'post-add', component: PostAddComponent },
-  { path: 'login', component: LoginComponent },
   {
     path: 'products',
     loadChildren: () =>
@@ -37,6 +27,21 @@ const routes: Routes = [
     path: 'posts/:id',
     loadChildren: () =>
       import('./pages/post/post.module').then((m) => m.PostModule),
+  },
+  {
+    path: 'post-add',
+    loadChildren: () =>
+      import('./pages/post-add/post-add.module').then((m) => m.PostAddModule),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./pages/start/start.module').then((m) => m.StartModule),
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/login/login.module').then((m) => m.LoginModule),
   },
 ];
 
