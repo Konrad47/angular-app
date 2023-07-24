@@ -34,14 +34,14 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent,
+    // ProductsComponent,
     MenuComponent,
     ButtonsComponent,
-    ProductTableComponent,
-    ProductComponent,
+    // ProductTableComponent,
+    // ProductComponent,
     ProductAddComponent,
     ProductFormComponent,
-    ProductEditFormComponent,
+    // ProductEditFormComponent,
     PostsComponent,
     PostTableComponent,
     PostComponent,
