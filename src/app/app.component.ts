@@ -5,6 +5,7 @@ import { AppStateInterface } from './models/appState.interface';
 import { Store, select } from '@ngrx/store';
 import { loggedUserSelector } from './store/authorization/auth.selectors';
 import * as AuthActions from '../app/store/authorization/auth.actions';
+import { updateToken } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ export class AppComponent {
 
     this.subscription = this.loggedUser$.subscribe((loggedUser) => {
       console.log('User', loggedUser);
+      updateToken(loggedUser.token);
     });
   }
 
