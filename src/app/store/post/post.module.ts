@@ -1,4 +1,4 @@
-import { Post, PostApi } from 'src/app/models/Post';
+import { Post, PostApi } from 'src/app/core/posts/shared/post.model';
 
 export interface PostStateInterface {
   isLoading: boolean;

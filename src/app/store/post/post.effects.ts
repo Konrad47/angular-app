@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as PostActions from './post.actions';
 import { catchError, map, mergeMap, of } from 'rxjs';
-import { PostService } from 'src/app/services/post.service';
-import { Post } from 'src/app/models/Post';
+import { PostService } from 'src/app/core/posts/shared/post.service';
+import { Post } from 'src/app/core/posts/shared/post.model';
 
 @Injectable()
 export class PostsEffects {

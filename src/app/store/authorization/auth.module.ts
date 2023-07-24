@@ -1,4 +1,4 @@
-import { LoggedUser } from 'src/app/models/authorization';
+import { LoggedUser } from 'src/app/core/login/shared/authorization.model';
 
 export interface AuthStateInterface {
   isLoading: boolean;

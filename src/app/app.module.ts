@@ -6,8 +6,8 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { ButtonsComponent } from './components/buttons/buttons.component';
+import { MenuComponent } from './shared/menu/menu.component';
+import { ButtonsComponent } from './shared/buttons/buttons.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/post/post.reducer';
 import { EffectsModule } from '@ngrx/effects';

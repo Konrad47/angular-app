@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { LoggedUser } from './models/authorization';
-import { AppStateInterface } from './models/appState.interface';
+import { LoggedUser } from './core/login/shared/authorization.model';
+import { AppStateInterface } from './store/appState.interface';
 import { Store, select } from '@ngrx/store';
 import { loggedUserSelector } from './store/authorization/auth.selectors';
 import * as AuthActions from '../app/store/authorization/auth.actions';

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import * as AuthActions from './auth.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { AuthorizationService } from 'src/app/services/authorization.service';
+import { AuthorizationService } from 'src/app/core/login/shared/authorization.service';
 import { catchError, map, mergeMap, of } from 'rxjs';
-import { User } from 'src/app/models/authorization';
+import { User } from 'src/app/core/login/shared/authorization.model';
 
 @Injectable()
 export class AuthEffects {

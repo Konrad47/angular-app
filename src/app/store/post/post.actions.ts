@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Post, PostApi } from 'src/app/models/Post';
+import { Post, PostApi } from 'src/app/core/posts/shared/post.model';
 
 export const getPosts = createAction('[Posts] Get Posts');
 export const getPostsSuccess = createAction(
