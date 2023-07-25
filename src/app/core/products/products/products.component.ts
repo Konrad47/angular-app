@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Product } from 'src/app/core/products/shared/product.model';
 import { ProductService } from 'src/app/core/products/shared/product.service';
+import { SingleTon } from 'src/app/shared/singleton.service';
 
 @Component({
   selector: 'app-products',
@@ -20,6 +21,10 @@ export class ProductsComponent {
           console.log(products), (this.products = products.products)
         )
       );
+
+    SingleTon.getInstance().getData();
+    SingleTon.getInstance().setData('Hi from products');
+    SingleTon.getInstance().getData();
   }
 
   deleteProduct(id: string) {

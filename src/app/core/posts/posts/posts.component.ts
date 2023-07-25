@@ -10,6 +10,7 @@ import {
 } from 'src/app/store/post/post.selectors';
 import { AppStateInterface } from 'src/app/store/appState.interface';
 import { Post, PostApi } from 'src/app/core/posts/shared/post.model';
+import { SingleTon } from 'src/app/shared/singleton.service';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -41,6 +42,10 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(PostActions.getPosts());
     this.store.dispatch(PostActions.getPost({ id: '1' }));
+
+    SingleTon.getInstance().getData();
+    SingleTon.getInstance().setData('Hi from posts');
+    SingleTon.getInstance().getData();
   }
 
   ngOnDestroy(): void {
