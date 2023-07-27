@@ -17,6 +17,8 @@ import { AuthEffects } from './store/authorization/auth.effects';
 import { authReducers } from './store/authorization/auth.reducer';
 import { NgxsModule } from '@ngxs/store';
 import { TodoState } from './store-ngxs/todo/todo.state';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 @NgModule({
   declarations: [AppComponent, MenuComponent, ButtonsComponent],
@@ -36,6 +38,8 @@ import { TodoState } from './store-ngxs/todo/todo.state';
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
     }),
     NgxsModule.forRoot([TodoState]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -49,6 +49,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./core/login/login/login.module').then((m) => m.LoginModule),
   },
+  {
+    path: 'todos',
+    loadChildren: () =>
+      import('./core/todos/todos/todos.module').then((m) => m.TodosModule),
+  },
 ];
 
 @NgModule({
