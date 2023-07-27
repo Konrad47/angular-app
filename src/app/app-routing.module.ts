@@ -54,6 +54,18 @@ const routes: Routes = [
     loadChildren: () =>
       import('./core/todos/todos/todos.module').then((m) => m.TodosModule),
   },
+  {
+    path: 'todos/:id',
+    loadChildren: () =>
+      import('./core/todos/todo/todo.module').then((m) => m.TodoModule),
+  },
+  {
+    path: 'todo-add',
+    loadChildren: () =>
+      import('./core/todos/todo-add/todo-add.module').then(
+        (m) => m.TodoAddModule
+      ),
+  },
 ];
 
 @NgModule({
