@@ -1,0 +1,30 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Todo</th>
+      <th scope="col">Completed</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="route-title" *ngFor="let todo of sortedTodos; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ todo.todo }}
+      </td>
+      <td *ngIf="todo.completed; else elseBlock">Yes</td>
+      <ng-template #elseBlock>
+        <td>No</td>
+      </ng-template>
+      <td>
+        <button [routerLink]="['/todos', todo.id]" routerLinkActive="active">
+          Edit
+        </button>
+        <button *ngIf="todo.id" (click)="onDelete(todo.id.toString())">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -20,6 +20,8 @@ export class TodosComponent {
     });
   }
 
+  deleteTodo(id: string) {}
+
   ngOnInit() {
     this.store.dispatch(new GetTodos());
   }

@@ -1,1 +1,12 @@
-<p>todos works!</p>
+<div *ngIf="todos$ | async as todos">
+  <div *ngIf="todos.todos.length === 0; else elseBlock">Loading...</div>
+
+  <ng-template #elseBlock>
+    <h1>Todos</h1>
+    <button [routerLink]="['/todo-add']" routerLinkActive="active">
+      Add todo
+    </button>
+    <app-todo-table [todos]="todos.todos" (onDeleteTodo)="deleteTodo($event)">
+    </app-todo-table>
+  </ng-template>
+</div>
