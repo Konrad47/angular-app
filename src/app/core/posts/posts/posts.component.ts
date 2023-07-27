@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import * as PostActions from '../../../store/post/post.actions';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, tap } from 'rxjs';
 import {
   errorSelector,
   isLoadingSelector,
@@ -32,6 +32,7 @@ export class PostsComponent implements OnInit {
     this.subscription = this.posts$.subscribe((posts) => {
       console.log('Posts:', posts);
     });
+    // this.posts$.pipe(tap((posts) => console.log(posts))).subscribe();
   }
 
   deletePost(id: string) {
