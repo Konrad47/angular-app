@@ -2,7 +2,13 @@ import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { TodoStateInterface } from './todo.module';
 import { TodoApi } from 'src/app/core/todos/shared/todo.model';
-import { AddTodo, DeleteTodo, GetTodos } from './todo.actions';
+import {
+  AddTodo,
+  DeleteTodo,
+  EditTodo,
+  GetTodo,
+  GetTodos,
+} from './todo.actions';
 import { TodoService } from 'src/app/core/todos/shared/todo.service';
 import { tap } from 'rxjs/operators';
 
@@ -59,21 +65,69 @@ export class TodoState {
     );
   }
 
+  @Action(GetTodo)
+  getTodo(
+    { getState, setState }: StateContext<TodoStateModel>,
+    { id }: GetTodo
+  ) {
+    return this.service.getTodo(id).pipe(
+      tap((result) => {
+        const state = getState();
+        setState({
+          items: {
+            ...state.items,
+            todo: result,
+          },
+        });
+      })
+    );
+  }
+
   @Action(AddTodo)
   addTodo(
     { getState, patchState }: StateContext<TodoStateModel>,
     { payload }: AddTodo
   ) {
-    const state = getState();
-    patchState({
-      items: {
-        ...state.items,
-        todos: {
-          ...state.items.todos,
-          todos: [...state.items.todos.todos, payload],
-        },
-      },
-    });
+    return this.service.addTodo(payload).pipe(
+      tap((result) => {
+        const state = getState();
+        patchState({
+          items: {
+            ...state.items,
+            todos: {
+              ...state.items.todos,
+              todos: [...state.items.todos.todos, result],
+            },
+          },
+        });
+      })
+    );
+  }
+
+  @Action(EditTodo)
+  editTodo(
+    { getState, setState }: StateContext<TodoStateModel>,
+    { payload, id }: EditTodo
+  ) {
+    return this.service.editTodo(payload, id).pipe(
+      tap((result) => {
+        const state = getState();
+        const todoList = [...state.items.todos.todos];
+        const todoIndex = todoList.findIndex(
+          (item) => item.id === parseInt(id)
+        );
+        todoList[todoIndex] = result;
+        setState({
+          items: {
+            ...state.items,
+            todos: {
+              ...state.items.todos,
+              todos: todoList,
+            },
+          },
+        });
+      })
+    );
   }
 
   @Action(DeleteTodo)
@@ -81,17 +135,21 @@ export class TodoState {
     { getState, patchState }: StateContext<TodoStateModel>,
     { id }: DeleteTodo
   ) {
-    const state = getState();
-    patchState({
-      items: {
-        ...state.items,
-        todos: {
-          ...state.items.todos,
-          todos: state.items.todos.todos.filter(
-            (todo) => todo.id !== parseInt(id)
-          ),
-        },
-      },
-    });
+    return this.service.deleteTodo(id).pipe(
+      tap(() => {
+        const state = getState();
+        patchState({
+          items: {
+            ...state.items,
+            todos: {
+              ...state.items.todos,
+              todos: state.items.todos.todos.filter(
+                (todo) => todo.id !== parseInt(id)
+              ),
+            },
+          },
+        });
+      })
+    );
   }
 }
