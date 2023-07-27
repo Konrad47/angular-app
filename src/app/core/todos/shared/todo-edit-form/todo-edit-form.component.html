@@ -1,0 +1,13 @@
+<form *ngIf="todo" class="add-form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+    <label for="todo">Todo</label>
+    <input
+      type="text"
+      name="todo"
+      [(ngModel)]="editedTodo.todo"
+      id="todo"
+      placeholder="todo"
+    />
+  </div>
+  <input type="submit" value="Update post" class="btn" />
+</form>

@@ -1,1 +1,5 @@
-<p>todo works!</p>
+<h3>Todo ID: {{ todoId }}</h3>
+<div *ngIf="todo$ | async as todo">
+  <app-todo-edit-form [todo]="todo" (onEditTodo)="onEdit($event)">
+  </app-todo-edit-form>
+</div>
