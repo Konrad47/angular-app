@@ -3,7 +3,7 @@ import { Select, Store } from '@ngxs/store';
 import { Observable, Subscription, tap } from 'rxjs';
 import { TodoState } from 'src/app/store-ngxs/todo/todo.state';
 import { TodoApi } from '../shared/todo.model';
-import { GetTodos } from 'src/app/store-ngxs/todo/todo.actions';
+import { DeleteTodo, GetTodos } from 'src/app/store-ngxs/todo/todo.actions';
 
 @Component({
   selector: 'app-todos',
@@ -20,7 +20,9 @@ export class TodosComponent {
     });
   }
 
-  deleteTodo(id: string) {}
+  deleteTodo(id: string) {
+    this.store.dispatch(new DeleteTodo(id));
+  }
 
   ngOnInit() {
     this.store.dispatch(new GetTodos());
