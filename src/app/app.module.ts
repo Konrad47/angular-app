@@ -15,6 +15,8 @@ import { PostsEffects } from './store/post/post.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AuthEffects } from './store/authorization/auth.effects';
 import { authReducers } from './store/authorization/auth.reducer';
+import { NgxsModule } from '@ngxs/store';
+import { TodoState } from './store-ngxs/todo/todo.state';
 
 @NgModule({
   declarations: [AppComponent, MenuComponent, ButtonsComponent],
@@ -33,6 +35,7 @@ import { authReducers } from './store/authorization/auth.reducer';
       trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
     }),
+    NgxsModule.forRoot([TodoState]),
   ],
   providers: [],
   bootstrap: [AppComponent],
