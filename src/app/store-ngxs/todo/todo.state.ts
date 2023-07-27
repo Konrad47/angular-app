@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { TodoStateInterface } from './todo.module';
 import { TodoApi } from 'src/app/core/todos/shared/todo.model';
-import { AddTodo, DeleteTodo } from './todo.actions';
+import { AddTodo, DeleteTodo, GetTodos } from './todo.actions';
+import { TodoService } from 'src/app/core/todos/shared/todo.service';
+import { tap } from 'rxjs/operators';
 
 export interface TodoStateModel {
   items: TodoStateInterface;
@@ -30,13 +32,35 @@ export interface TodoStateModel {
 })
 @Injectable()
 export class TodoState {
+  constructor(private service: TodoService) {}
+
   @Selector()
-  static getTodos(state: TodoApi) {
-    return state.todos;
+  static getTodos(state: TodoStateModel) {
+    return state.items.todos;
+  }
+
+  @Selector()
+  static getTodo(state: TodoStateModel) {
+    return state.items.todo;
+  }
+
+  @Action(GetTodos)
+  getTodos({ getState, setState }: StateContext<TodoStateModel>) {
+    return this.service.getTodos().pipe(
+      tap((result) => {
+        const state = getState();
+        setState({
+          items: {
+            ...state.items,
+            todos: result,
+          },
+        });
+      })
+    );
   }
 
   @Action(AddTodo)
-  add(
+  addTodo(
     { getState, patchState }: StateContext<TodoStateModel>,
     { payload }: AddTodo
   ) {
@@ -53,9 +77,9 @@ export class TodoState {
   }
 
   @Action(DeleteTodo)
-  delete(
+  deleteTodo(
     { getState, patchState }: StateContext<TodoStateModel>,
-    { payload }: DeleteTodo
+    { id }: DeleteTodo
   ) {
     const state = getState();
     patchState({
@@ -64,7 +88,7 @@ export class TodoState {
         todos: {
           ...state.items.todos,
           todos: state.items.todos.todos.filter(
-            (todo) => todo.id !== parseInt(payload)
+            (todo) => todo.id !== parseInt(id)
           ),
         },
       },
