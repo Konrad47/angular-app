@@ -1,0 +1,13 @@
+<form class="add-form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+    <label for="todo">Todo</label>
+    <input
+      type="text"
+      name="todo"
+      [(ngModel)]="todo"
+      id="todo"
+      placeholder="todo"
+    />
+  </div>
+  <input type="submit" value="Save post" class="btn" />
+</form>
