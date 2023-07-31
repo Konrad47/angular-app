@@ -3,12 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoggedUser, User } from './authorization.model';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  }),
-};
-
 @Injectable({
   providedIn: 'root',
 })
@@ -18,6 +12,6 @@ export class AuthorizationService {
   constructor(private http: HttpClient) {}
 
   loginUser(user: User): Observable<LoggedUser> {
-    return this.http.post<LoggedUser>(this.apiUrl, user, httpOptions);
+    return this.http.post<LoggedUser>(this.apiUrl, user);
   }
 }

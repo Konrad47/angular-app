@@ -5,7 +5,6 @@ import { AppStateInterface } from './store/appState.interface';
 import { Store, select } from '@ngrx/store';
 import { loggedUserSelector } from './store/authorization/auth.selectors';
 import * as AuthActions from '../app/store/authorization/auth.actions';
-import { updateToken } from './app.config';
 import { Select } from '@ngxs/store';
 import { AuthState } from './store-ngxs/auth/auth.state';
 
