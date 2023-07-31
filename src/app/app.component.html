@@ -1,11 +1,15 @@
 <div>
   <app-menu></app-menu>
   <div class="app-container">
-    <div *ngIf="loggedUser$ | async as loggedUser">
-      <app-buttons *ngIf="loggedUser.token !== ''"></app-buttons>
-      <div *ngIf="loggedUser.token === ''" class="buttons">
-        <a routerLink="login">Login page</a>
-      </div>
+    <div>
+      <app-buttons
+        *ngIf="(token$ | async) !== ''; else elseBlock"
+      ></app-buttons>
+      <ng-template #elseBlock>
+        <div class="buttons">
+          <a routerLink="login">Login page</a>
+        </div>
+      </ng-template>
     </div>
     <router-outlet></router-outlet>
   </div>

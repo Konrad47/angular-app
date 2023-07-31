@@ -6,6 +6,8 @@ import { Store, select } from '@ngrx/store';
 import { loggedUserSelector } from './store/authorization/auth.selectors';
 import * as AuthActions from '../app/store/authorization/auth.actions';
 import { updateToken } from './app.config';
+import { Select } from '@ngxs/store';
+import { AuthState } from './store-ngxs/auth/auth.state';
 
 @Component({
   selector: 'app-root',
@@ -14,19 +16,21 @@ import { updateToken } from './app.config';
 })
 export class AppComponent {
   title = 'angular-app';
-  loggedUser$: Observable<LoggedUser>;
-  private subscription: Subscription;
+  @Select(AuthState.getToken) token$!: Observable<string>;
 
-  constructor(private store: Store<AppStateInterface>) {
-    this.loggedUser$ = this.store.pipe(select(loggedUserSelector));
+  // loggedUser$: Observable<LoggedUser>;
+  // private subscription: Subscription;
 
-    this.subscription = this.loggedUser$.subscribe((loggedUser) => {
-      console.log('User', loggedUser);
-      updateToken(loggedUser.token);
-    });
-  }
+  // constructor(private store: Store<AppStateInterface>) {
+  //   this.loggedUser$ = this.store.pipe(select(loggedUserSelector));
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+  //   this.subscription = this.token$.subscribe((loggedUser) => {
+  //     console.log('User', loggedUser);
+  //     updateToken(loggedUser);
+  //   });
+  // }
+
+  // ngOnDestroy(): void {
+  //   this.subscription.unsubscribe();
+  // }
 }
