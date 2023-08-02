@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { LoggedUser } from './core/login/shared/authorization.model';
-import { AppStateInterface } from './store/appState.interface';
+import { LoggedUser } from './core/models/authorization.model';
+import { AppStateInterface } from './core/stores/store-ngrx/appState.interface';
 import { Store, select } from '@ngrx/store';
-import { loggedUserSelector } from './store/authorization/auth.selectors';
-import * as AuthActions from '../app/store/authorization/auth.actions';
 import { Select } from '@ngxs/store';
-import { AuthState } from './store-ngxs/auth/auth.state';
+import { AuthState } from './core/stores/store-ngxs/auth/auth.state';
 
 @Component({
   selector: 'app-root',

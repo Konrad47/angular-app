@@ -6,21 +6,21 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './shared/menu/menu.component';
-import { ButtonsComponent } from './shared/buttons/buttons.component';
+import { MenuComponent } from './core/components/menu/menu.component';
+import { ButtonsComponent } from './core/components/buttons/buttons.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers } from './store/post/post.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { PostsEffects } from './store/post/post.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AuthEffects } from './store/authorization/auth.effects';
-import { authReducers } from './store/authorization/auth.reducer';
 import { NgxsModule } from '@ngxs/store';
-import { TodoState } from './store-ngxs/todo/todo.state';
+import { TodoState } from './core/stores/store-ngxs/todo/todo.state';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-import { AuthState } from './store-ngxs/auth/auth.state';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { reducers } from './core/stores/store-ngrx/post/post.reducer';
+import { authReducers } from './core/stores/store-ngrx/authorization/auth.reducer';
+import { AuthEffects } from './core/stores/store-ngrx/authorization/auth.effects';
+import { PostsEffects } from './core/stores/store-ngrx/post/post.effects';
+import { AuthState } from './core/stores/store-ngxs/auth/auth.state';
 
 @NgModule({
   declarations: [AppComponent, MenuComponent, ButtonsComponent],
