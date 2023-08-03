@@ -21,6 +21,7 @@ import { authReducers } from './core/stores/store-ngrx/authorization/auth.reduce
 import { AuthEffects } from './core/stores/store-ngrx/authorization/auth.effects';
 import { PostsEffects } from './core/stores/store-ngrx/post/post.effects';
 import { AuthState } from './core/stores/store-ngxs/auth/auth.state';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 @NgModule({
   declarations: [AppComponent, MenuComponent, ButtonsComponent],
@@ -42,6 +43,9 @@ import { AuthState } from './core/stores/store-ngxs/auth/auth.state';
     NgxsModule.forRoot([TodoState, AuthState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
+    NgxsStoragePluginModule.forRoot({
+      key: 'auth',
+    }),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
