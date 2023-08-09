@@ -26,7 +26,7 @@ export class PostsComponent implements OnInit {
   constructor(private store: Store<AppStateInterface>) {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
-    this.posts$ = this.store.pipe(select(postsSelector));
+    this.posts$ = this.store.pipe(tap(console.log), select(postsSelector));
     this.post$ = this.store.pipe(select(postSelector));
 
     this.subscription = this.posts$.subscribe((posts) => {
