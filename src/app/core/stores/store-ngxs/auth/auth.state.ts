@@ -2,7 +2,7 @@ import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { AuthStateInterface } from './auth.module';
 import { Injectable } from '@angular/core';
 import { AuthorizationService } from 'src/app/core/auth/authorization.service';
-import { Login } from './auth.actions';
+import { LogOut, Login } from './auth.actions';
 import { User } from 'src/app/core/models/authorization.model';
 import { tap } from 'rxjs/operators';
 
@@ -46,5 +46,19 @@ export class AuthState {
         });
       })
     );
+  }
+
+  @Action(LogOut)
+  logOut({ getState, setState }: StateContext<AuthStateModel>) {
+    const state = getState();
+    setState({
+      items: {
+        ...state.items,
+        loggedUser: {
+          firstName: '',
+          token: '',
+        },
+      },
+    });
   }
 }

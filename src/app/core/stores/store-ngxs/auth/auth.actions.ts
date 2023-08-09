@@ -5,3 +5,9 @@ export class Login {
 
   constructor(public user: User) {}
 }
+
+export class LogOut {
+  static readonly type = '[Auth] Log out';
+
+  constructor() {}
+}
