@@ -60,5 +60,6 @@ export class AuthState {
         },
       },
     });
+    window.location.reload();
   }
 }
