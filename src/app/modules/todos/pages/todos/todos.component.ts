@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
-import { Observable, Subscription, tap } from 'rxjs';
+import { Observable, Subscription, map, tap } from 'rxjs';
 import { TodoState } from 'src/app/core/stores/store-ngxs/todo/todo.state';
-import { TodoApi } from '../../../../core/models/todo.model';
+import { Todo, TodoApi } from '../../../../core/models/todo.model';
 import {
   DeleteTodo,
   GetTodos,
@@ -15,6 +15,7 @@ import {
 })
 export class TodosComponent {
   @Select(TodoState.getTodos) todos$!: Observable<TodoApi>;
+  filteredTodos$!: Observable<Todo[]>;
   private subscription: Subscription;
 
   constructor(private store: Store) {
@@ -29,6 +30,9 @@ export class TodosComponent {
 
   ngOnInit() {
     this.store.dispatch(new GetTodos());
+    this.filteredTodos$ = this.todos$.pipe(
+      map((todos) => todos.todos.filter((todo) => (todo.id as number) < 15))
+    );
   }
 
   ngOnDestroy(): void {
