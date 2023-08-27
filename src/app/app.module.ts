@@ -21,7 +21,7 @@ import { authReducers } from './core/stores/store-ngrx/authorization/auth.reduce
 import { AuthEffects } from './core/stores/store-ngrx/authorization/auth.effects';
 import { PostsEffects } from './core/stores/store-ngrx/post/post.effects';
 import { AuthState } from './core/stores/store-ngxs/auth/auth.state';
-import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { NgxsStoragePluginModule, StorageOption } from '@ngxs/storage-plugin';
 
 @NgModule({
   declarations: [AppComponent, MenuComponent, ButtonsComponent],
@@ -45,6 +45,7 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
     NgxsLoggerPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({
       key: 'auth',
+      storage: StorageOption.SessionStorage,
     }),
   ],
   providers: [
