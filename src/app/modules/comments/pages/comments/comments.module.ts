@@ -3,15 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { CommentsRoutingModule } from './comments-routing.module';
 import { CommentsComponent } from './comments.component';
-
+import { CommentTableComponent } from '../../components/comment-table/comment-table.component';
 
 @NgModule({
-  declarations: [
-    CommentsComponent
-  ],
-  imports: [
-    CommonModule,
-    CommentsRoutingModule
-  ]
+  declarations: [CommentsComponent, CommentTableComponent],
+  imports: [CommonModule, CommentsRoutingModule],
 })
-export class CommentsModule { }
+export class CommentsModule {}
