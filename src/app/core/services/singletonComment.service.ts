@@ -3,18 +3,18 @@ import { CommentApi } from '../models/comment.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+// @Injectable({
+//   providedIn: 'root',
+// })
 export class SingletonComment {
   private static instance: SingletonComment;
-  private http!: HttpClient;
 
-  private commentApi!: CommentApi;
-  constructor() {}
-  public static getCommentInstance() {
-    if (SingletonComment.instance) {
-      SingletonComment.instance = new SingletonComment();
+  private commentApi!: Observable<CommentApi>;
+  constructor(private http: HttpClient) {}
+
+  public static getCommentInstance(http: HttpClient): SingletonComment {
+    if (!SingletonComment.instance) {
+      SingletonComment.instance = new SingletonComment(http);
     }
     return SingletonComment.instance;
   }
@@ -24,9 +24,8 @@ export class SingletonComment {
   fetchComments(): Observable<CommentApi> {
     return this.http.get<CommentApi>(this.apiUrl);
   }
-  getComments() {
-    this.fetchComments().subscribe(
-      (comments) => (this.commentApi.comments = comments.comments)
-    );
+  getComments(): Observable<CommentApi> {
+    this.commentApi = this.fetchComments();
+    return this.commentApi;
   }
 }
