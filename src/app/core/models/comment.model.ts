@@ -1,6 +1,6 @@
 export interface CommentApi {
   limit: number;
-  posts: Comment[];
+  comments: Comment[];
   skip: number;
   total: number;
 }

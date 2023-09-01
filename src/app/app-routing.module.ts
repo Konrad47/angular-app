@@ -90,6 +90,13 @@ const routes: Routes = [
       ),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'comments',
+    loadChildren: () =>
+      import('./modules/comments/pages/comments/comments.module').then(
+        (m) => m.CommentsModule
+      ),
+  },
 ];
 
 @NgModule({
