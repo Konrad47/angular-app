@@ -1,1 +1,30 @@
-<p>comment-table works!</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User</th>
+      <th scope="col">Body</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="route-title" *ngFor="let comment of sortedComments; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        {{ comment.user.username }}
+      </td>
+      <td>{{ comment.body }}</td>
+      <td>
+        <button
+          [routerLink]="['/comments', comment.id]"
+          routerLinkActive="active"
+        >
+          Edit
+        </button>
+        <button *ngIf="comment.id" (click)="onDelete(comment.id.toString())">
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

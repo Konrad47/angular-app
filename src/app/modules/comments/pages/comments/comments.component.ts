@@ -12,16 +12,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CommentsComponent {
   comments: Comment[] = [];
+  commentInstance = SingletonComment.getCommentInstance(this.http);
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    SingletonComment.getCommentInstance(this.http)
-      .getComments()
-      .subscribe(
-        (comments) => (
-          console.log(comments), (this.comments = comments.comments)
-        )
-      );
+    this.commentInstance.fetchCommentsRequest().subscribe(() => {
+      this.comments = this.commentInstance.getComments();
+    });
+  }
+
+  deleteComment(id: string) {
+    this.commentInstance.deleteCommentRequest(id).subscribe(() => {
+      this.comments = this.commentInstance.getComments();
+    });
   }
 }

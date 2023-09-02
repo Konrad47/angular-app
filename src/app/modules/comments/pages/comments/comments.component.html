@@ -1,1 +1,13 @@
-<p>comments works!</p>
+<div *ngIf="comments.length === 0; else elseBlock">Loading...</div>
+
+<ng-template #elseBlock>
+  <h1>Comments</h1>
+  <button [routerLink]="['/comment-add']" routerLinkActive="active">
+    Add comment
+  </button>
+  <app-comment-table
+    [comments]="comments"
+    (onDeleteComment)="deleteComment($event)"
+  >
+  </app-comment-table>
+</ng-template>
