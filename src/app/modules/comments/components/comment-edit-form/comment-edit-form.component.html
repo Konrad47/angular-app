@@ -1,1 +1,23 @@
-<p>comment-edit-form works!</p>
+<form *ngIf="comment" class="add-form" (ngSubmit)="onSubmit()">
+  <div class="form-control">
+    <label for="title">User</label>
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="comment.user.username"
+      id="title"
+      placeholder="Title"
+    />
+  </div>
+  <div class="form-control">
+    <label for="desc">Body</label>
+    <input
+      type="text"
+      name="desc"
+      [(ngModel)]="comment.body"
+      id="desc"
+      placeholder="Description"
+    />
+  </div>
+  <input type="submit" value="Update product" class="btn" />
+</form>
