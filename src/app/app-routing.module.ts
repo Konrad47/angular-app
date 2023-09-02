@@ -96,6 +96,7 @@ const routes: Routes = [
       import('./modules/comments/pages/comments/comments.module').then(
         (m) => m.CommentsModule
       ),
+    canActivate: [AuthGuard],
   },
 ];
 
