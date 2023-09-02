@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 export class SingletonComment {
   private static instance: SingletonComment;
 
-  private commentApi!: Observable<CommentApi>;
   private comments!: Comment[];
+  private comment!: Comment;
 
   constructor(private http: HttpClient) {}
 
@@ -21,16 +21,30 @@ export class SingletonComment {
   private apiUrl = 'https://dummyjson.com/comments';
 
   fetchCommentsRequest(): Observable<CommentApi> {
-    this.commentApi = this.http.get<CommentApi>(this.apiUrl);
-    this.commentApi.subscribe(
-      (comments) => (this.comments = comments.comments)
-    );
-    return this.commentApi;
+    const commentApi = this.http.get<CommentApi>(this.apiUrl);
+    commentApi.subscribe((comments) => {
+      this.comments = comments.comments;
+    });
+    return commentApi;
   }
 
   getComments(): Comment[] {
     console.log(this.comments);
     return this.comments;
+  }
+
+  fetchCommentRequest(id: string): Observable<Comment> {
+    const url = `${this.apiUrl}/${id}`;
+    const commentApi = this.http.get<Comment>(url);
+    commentApi.subscribe((comment) => {
+      this.comment = comment;
+    });
+    return commentApi;
+  }
+
+  getComment(): Comment {
+    console.log(this.comment);
+    return this.comment;
   }
 
   deleteCommentRequest(id: string): Observable<Comment> {
